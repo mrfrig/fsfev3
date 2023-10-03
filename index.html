@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>title</title>
+</head>
+<body>
+  
+</body>
+<script>
+  let ws;
+  const proto = window.location.protocol === 'https:' ? 'wss' : 'ws';
+  const url = `${proto}://${window.location.host}/ws`;
+  ws = new WebSocket(url);
+  ws.onopen = () => {
+    console.log('connected');
+  };
+  ws.onmessage = (e) => {
+    console.log(e.data);
+  };
+  ws.onclose = () => {
+    console.log('disconnected');
+  };
+  ws.onerror = (e) => {
+    console.log(e);
+  };
+</script>
+</html>
